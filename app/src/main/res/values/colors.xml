@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#03DAC6</color>
+    <color name="colorPrimaryDark">#018786</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="color_purple">#03DAC6</color>
+    <color name="background">#ffffff</color>
+
+    <color name="darkColorPrimary">#03DAC6</color>
+    <color name="darkColorPrimaryDark">#018786</color>
+    <color name="darkColorAccent">#03DAC6</color>
+    <color name="darkBackground">#121212</color>
+
+    <color name = "mtrl_list_item_tint">
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item android:alpha="0.87" android:color="?attr/colorOnSurface"/>
+
+    </selector>
+    </color>
+</resources>
