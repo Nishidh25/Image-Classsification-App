@@ -36,7 +36,7 @@ public class SettingsFragment extends Fragment {
             getContext().setTheme(R.style.AppTheme_Dark_NoActionBar);
             final TextView textView = root.findViewById(R.id.text_settings);
 
-            textView.setText("Dark Theme Set!!!!!!!!!");
+            textView.setText("Dark Theme Set!");
         }
 
         super.onCreate(savedInstanceState);

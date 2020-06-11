@@ -1,10 +1,12 @@
 package com.nss.imageclasssification.ui.classify;
 
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.gesture.Prediction;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
 import android.graphics.RectF;
@@ -30,7 +32,6 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nss.imageclasssification.R;
 
 import org.tensorflow.lite.DataType;
@@ -67,6 +68,7 @@ import java.util.PriorityQueue;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.content.ContentValues.TAG;
+
 
 
 public class Classification_UI extends Fragment {
@@ -124,9 +126,8 @@ public class Classification_UI extends Fragment {
         extendedFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CardView cardView =(CardView) getActivity().findViewById(R.id.cardView);
-                cardView.setVisibility(View.VISIBLE);
-
+                TextView hidden =(TextView) getActivity().findViewById(R.id.textViewhidden);
+                hidden.setVisibility(View.INVISIBLE);
                 Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                 startActivityForResult(gallery, PICK_IMAGE);
                 //Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -314,7 +315,7 @@ public class Classification_UI extends Fragment {
         final TensorProcessor probabilityProcessor;
         Integer sensorOrientation;
         sensorOrientation = 90 - getScreenOrientation();
-        MappedByteBuffer tfliteModel = FileUtil.loadMappedFile(getActivity(), "inception_v4_1_default_1.tflite");
+        MappedByteBuffer tfliteModel = FileUtil.loadMappedFile(getActivity(), "efficientnet-lite0-fp32.tflite");
 
         //nnApiDelegate = new NnApiDelegate();
         //tfliteOptions.addDelegate(nnApiDelegate);
@@ -364,6 +365,7 @@ public class Classification_UI extends Fragment {
         Log.d(TAG, "Bitmap Config after : " + bitmap.getConfig());
         int cropSize = Math.min(bitmap.getWidth(), bitmap.getHeight());
         int numRotation = sensorOrientation / 90;
+
         ImageProcessor imageProcessor =
                 new ImageProcessor.Builder()
                         .add(new ResizeWithCropOrPadOp(cropSize, cropSize))
@@ -371,6 +373,7 @@ public class Classification_UI extends Fragment {
                         .add(new Rot90Op(numRotation))
                         .add(getPreprocessNormalizeOp())
                         .build();
+
         inputImageBuffer = imageProcessor.process(inputImageBuffer);
 
         tflite.run(inputImageBuffer.getBuffer(), outputProbabilityBuffer.getBuffer().rewind());
@@ -470,6 +473,8 @@ public class Classification_UI extends Fragment {
                     //Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                     Log.i(TAG, "onActivityResult: bitmap = " + bitmap);
                     Classify(bitmap);
+                    CardView cardView =(CardView) getActivity().findViewById(R.id.cardView);
+                    cardView.setVisibility(View.VISIBLE);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

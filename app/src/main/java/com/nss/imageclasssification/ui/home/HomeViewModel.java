@@ -10,7 +10,8 @@ public class HomeViewModel extends ViewModel {
 
     public HomeViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Welcome");
+        mText.setValue("An android app for image classification.  " +
+                "It uses EfficientNet-lite model to classify an image selected from storage classification.");
     }
 
     public LiveData<String> getText() {

@@ -120,5 +120,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.926" />
 
+    <TextView
+        android:id="@+id/textViewhidden"
+        android:layout_width="281dp"
+        android:layout_height="52dp"
+        android:gravity="center"
+        android:text="Load an image to display the predictions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.469" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
