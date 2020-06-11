@@ -29,5 +29,5 @@ EfficientNet-lite are a set of mobile/IoT friendly image classification models. 
 # To do
 * Clean and organize the code
 * Improve UI
-* Add Support to Load Custom Models
+* Add Support to Load Custom Models from within the application
 * Add Live Image Classification
