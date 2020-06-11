@@ -10,7 +10,7 @@ Table of Contents
 
 # Description 
 
-An android app for image classification. It uses EfficientNet-lite model to classify an image selected from storage classification.
+An android app for image classification. It uses EfficientNet-lite model to classify an image selected from storage.
 
 The application uses [Tensorflow Lite](https://www.tensorflow.org/lite) to load the model.
 
