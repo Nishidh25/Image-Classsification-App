@@ -21,6 +21,11 @@ EfficientNet-lite are a set of mobile/IoT friendly image classification models. 
 
 # Screenshots
 
+<img src = "https://github.com/Nishidh25/Image-Classsification-App/blob/master/Screenshot_20200611-233136.jpg" width="225" height="450" />
+
+<img src = "https://github.com/Nishidh25/Image-Classsification-App/blob/master/Screenshot_20200611-233206.jpg" width="225" height="450" />
+
+
 # To do
 * Clean and organize the code
 * Improve UI
